@@ -17,11 +17,3 @@ jobs:
       - name: build with maven
         run: mvn -B package --file pom.xml
 
-#      - name: Setup Apache Maven Central
-#        uses: actions/setup-java@v2
-#        with:
-#          distribution: 'temurin'
-#          java-version: '11'
-#          cache: 'maven'
-#          settings-path: ${{ github.workspace }} # location for the settings.xml file
-
