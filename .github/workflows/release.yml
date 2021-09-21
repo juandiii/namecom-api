@@ -26,7 +26,7 @@ jobs:
       - name: Configure GPG Key
         id: install-secret-key
         run: |
-          cat <(echo -e "${{ secrets.GPG_SIGNING_KEY }}") | gpg --batch --import
+          cat <(echo -e "${{ secrets.GPG_SIGNING_KEY }}") | base64 --decode |gpg --batch --import
           gpg --list-secret-keys --keyid-format LONG
       - if: github.event.release
         name: Release Maven Packages
