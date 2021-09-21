@@ -25,9 +25,8 @@ jobs:
         run: |
             mkdir -p ~/.gnupg/
             chown -R $(whoami) ~/.gnupg/
-            chmod 700 ~/.gnupg
-            printf "$GPG_SIGNING_KEY" | base64 --decode > ~/.gnupg/private.key
-            gpg --import --batch --yes ~/.gnupg/private.key
+            chmod -R 700 ~/.gnupg/
+            echo "$GPG_SIGNING_KEY" | base64 --decode | gpg --import --no-tty --batch --yes
         env:
           GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
       - if: github.event.release
