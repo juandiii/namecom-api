@@ -25,7 +25,7 @@ jobs:
         run: |
             mkdir -p ~/.gnupg/
             printf "$GPG_SIGNING_KEY" | base64 --decode > ~/.gnupg/private.key
-            gpg --import ~/.gnupg/private.key --no-tty --batch --yes
+            gpg --import --no-tty --batch --yes ~/.gnupg/private.key
         env:
           GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
       - if: github.event.release
