@@ -17,10 +17,29 @@
       "labels": ["other"]
     },
     {
+      "title": "## 📄 Documentation",
+      "labels": ["documentation"]
+    },
+    {
       "title": "## 📦 Dependencies",
       "labels": ["dependencies"]
     }
   ],
+  "ignore_labels": ["ignore"],
+  "sort": "ASC",
+  "template": "${{CATEGORIZED_COUNT}} changes since ${{FROM_TAG}}\n\n${{CHANGELOG}}\n\n## Other Updates\n\n${{UNCATEGORIZED}}\n",
+  "pr_template": "- ${{TITLE}} (#${{NUMBER}})",
+  "empty_template": "No Changes",
+  "label_extractor": [
+    {
+      "pattern": "(.) (.+)",
+      "target": "$1"
+    }
+  ],
+  "max_tags_to_fetch": 200,
   "max_pull_requests": 1000,
-  "max_back_track_time_days": 1000
+  "max_back_track_time_days": 90,
+  "tag_resolver": {
+    "method": "semver"
+  }
 }
