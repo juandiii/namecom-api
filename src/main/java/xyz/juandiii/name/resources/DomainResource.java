@@ -37,12 +37,11 @@ public class DomainResource {
       .get(Domain.class);
   }
 
-  // TODO: Fix this method
-  public OrderDomain createDomain(Domain domain) {
+  public OrderDomain createDomain(CreateDomain createDomain) {
     Response response = resteasyWebTarget
       .path("/domains")
       .request(MediaType.APPLICATION_JSON)
-      .post(Entity.entity(domain, MediaType.APPLICATION_JSON));
+      .post(Entity.entity(createDomain, MediaType.APPLICATION_JSON));
 
     return new ResponseWrapper(response)
       .get(OrderDomain.class);
