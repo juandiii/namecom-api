@@ -23,7 +23,9 @@ jobs:
         run: mvn -B versions:set -DnewVersion=${{ github.event.release.tag_name }} -DgenerateBackupPoms=false
       - name: Configure GPG Key
         run: |
-            echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --import
+            mkdir -p ~/.gnupg/
+            printf "$GPG_SIGNING_KEY" | base64 --decode > ~/.gnupg/private.key
+            gpg --import ~/.gnupg/private.key
         env:
           GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
       - if: github.event.release
