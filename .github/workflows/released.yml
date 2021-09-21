@@ -1,7 +1,8 @@
+name: 'Trigger Release'
 on:
   release:
     types:
-      - released
+      - created
 
 jobs:
   publish:
