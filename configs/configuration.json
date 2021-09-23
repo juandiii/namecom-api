@@ -27,7 +27,7 @@
   ],
   "ignore_labels": ["ignore"],
   "sort": "ASC",
-  "template": "${{CATEGORIZED_COUNT}} changes since ${{FROM_TAG}}\n\n${{CHANGELOG}}\n\n## Other Updates\n\n${{UNCATEGORIZED}}\n",
+  "template": "${{CATEGORIZED_COUNT}} changes since ${{FROM_TAG}}\n\n${{CHANGELOG}}\n",
   "pr_template": "- ${{TITLE}} (#${{NUMBER}})",
   "empty_template": "No Changes",
   "label_extractor": [
