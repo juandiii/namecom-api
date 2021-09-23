@@ -1,5 +1,8 @@
 package xyz.juandiii.name.models;
 
+import javax.json.bind.annotation.JsonbPropertyOrder;
+
+@JsonbPropertyOrder(value = {"domainName", "sld", "tld", "purchasable", "premium", "purchasePrice", "purchaseType", "renewalPrice"})
 public class SearchResultDomain {
   private String domainName;
   private String sld;

@@ -1,16 +1,16 @@
 package xyz.juandiii.name.models;
 
-import java.util.Set;
+import java.util.List;
 
 public class CheckAvailabilityDomainResult {
 
-  private Set<SearchResultDomain> results;
+  private List<SearchResultDomain> results;
 
-  public Set<SearchResultDomain> getResults() {
+  public List<SearchResultDomain> getResults() {
     return results;
   }
 
-  public CheckAvailabilityDomainResult setResults(Set<SearchResultDomain> results) {
+  public CheckAvailabilityDomainResult setResults(List<SearchResultDomain> results) {
     this.results = results;
     return this;
   }
