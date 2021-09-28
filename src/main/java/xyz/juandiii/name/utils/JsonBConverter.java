@@ -1,5 +1,7 @@
 package xyz.juandiii.name.utils;
 
+import xyz.juandiii.name.exceptions.InternalErrorException;
+
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.JsonbException;
@@ -12,7 +14,7 @@ public class JsonBConverter {
     try {
       return jsonb.fromJson(json, clazz);
     } catch (JsonbException | NullPointerException ex) {
-      return null;
+      throw new InternalErrorException("An occurred internal error");
     }
   }
 
