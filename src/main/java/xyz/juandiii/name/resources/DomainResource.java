@@ -66,4 +66,13 @@ public class DomainResource {
       .get(CheckAvailabilityDomainResult.class);
   }
 
+  public Domain setNameServers(Domain domain) {
+    Response response = resteasyWebTarget.path(String.format("/domains/%s:setNameservers", domain.getDomainName()))
+      .request(MediaType.APPLICATION_JSON)
+      .post(Entity.entity(domain, MediaType.APPLICATION_JSON));
+
+    return new ResponseWrapper(response)
+      .get(Domain.class);
+  }
+
 }

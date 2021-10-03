@@ -64,4 +64,13 @@ public class DomainAsyncResource {
       .thenApply(response -> new ResponseWrapper(response)
         .get(CheckAvailabilityDomainResult.class));
   }
+
+  public CompletionStage<Domain> setNameServers(Domain domain) {
+    return target.path(String.format("/domains/%s:setNameservers", domain.getDomainName()))
+      .request(MediaType.APPLICATION_JSON)
+      .rx()
+      .post(Entity.entity(domain, MediaType.APPLICATION_JSON))
+      .thenApply(response -> new ResponseWrapper(response)
+        .get(Domain.class));
+  }
 }
