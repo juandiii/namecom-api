@@ -17,7 +17,7 @@ You need to set configuration the properties `username`, `token` and set them pr
 | username       | Username of Name.com        | ✅        |
 | token          | Secret token of Name.com    | ✅        |
 
-# Example
+# 📄 Example
 
 We have two options for synchronous and asynchronous for some application you can use imperative programming or reactive programming. In my case I do to set reactive programming with Smallrye Mutiny with the framework Quarkus
 
@@ -31,7 +31,7 @@ Name client = Name.getInstance("username", "token-123");
 ListDomain domains = client.domains().getDomains();
 ```
 
-## Example usage (asynchronous)
+## 👨🏻‍💻 Example usage (asynchronous)
 
 ```java
 // Get an instance asynchronous
