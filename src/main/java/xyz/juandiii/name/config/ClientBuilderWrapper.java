@@ -1,4 +1,8 @@
-package xyz.juandiii.name;
+package xyz.juandiii.name.config;
+
+
+//import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
+//import org.jboss.resteasy.client.jaxrs.engines.vertx.VertxClientHttpEngine;
 
 import javax.ws.rs.client.ClientBuilder;
 
@@ -22,6 +26,7 @@ public class ClientBuilderWrapper {
     try {
       Object o = clazz.newInstance();
 //      clazz.getMethod("sslContext", SSLContext.class).invoke(o, sslContext);
+//      clazz.getMethod("httpEngine", ClientHttpEngine.class).invoke(o, new VertxClientHttpEngine());
       clazz.getMethod("connectionPoolSize", int.class).invoke(o, 10);
 //      if (disableTrustManager) {
 //        clazz.getMethod("disableTrustManager").invoke(o);

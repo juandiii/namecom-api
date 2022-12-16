@@ -8,6 +8,7 @@ import xyz.juandiii.name.models.ErrorDomain;
 import javax.ws.rs.ProcessingException;
 import javax.ws.rs.core.Response;
 
+
 public class ResponseWrapper {
 
   private final Response response;
@@ -16,23 +17,21 @@ public class ResponseWrapper {
     this.response = response;
   }
 
-  public int getStatus() {
-    return response.getStatus();
-  }
-
   public String getResponse() {
-    String output = response.readEntity(String.class);
-    if (getStatus() >= 200 && 299 >= getStatus()) {
+    int status = this.response.getStatus();
+    String output = this.response.readEntity(String.class);
+    response.close();
+    if (status >= 200 && 299 >= status) {
       return output;
-    } else if (getStatus() == 404) {
+    } else if (status == 404) {
       ErrorDomain errorDomain = JsonBConverter.fromJson(output, ErrorDomain.class);
       throw new NotFoundException(errorDomain.getMessage());
-    } else if (getStatus() >= 400 && 499 >= getStatus()) {
+    } else if (status >= 400 && 499 >= status) {
       ErrorDomain errorDomain = JsonBConverter.fromJson(output, ErrorDomain.class);
       throw new BadRequestException(errorDomain.getMessage());
-    } else if (getStatus() >= 500 && 599 >= getStatus()) {
+    } else if (status >= 500 && 599 >= status) {
       ErrorDomain errorDomain = JsonBConverter.fromJson(output, ErrorDomain.class);
-      throw new BadRequestException(errorDomain.getMessage());
+      throw new InternalErrorException(errorDomain.getMessage());
     } else {
         throw new InternalErrorException();
     }
@@ -40,7 +39,7 @@ public class ResponseWrapper {
 
   public <T> T get(Class<T> clazz) {
     try {
-      String output = getResponse();
+      String output = this.getResponse();
       return JsonBConverter.fromJson(output, clazz);
     } catch (ProcessingException ex) {
       return null;

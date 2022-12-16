@@ -6,6 +6,7 @@ import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.JsonbException;
 
+
 public class JsonBConverter {
 
   private static final Jsonb jsonb = JsonbBuilder.create();

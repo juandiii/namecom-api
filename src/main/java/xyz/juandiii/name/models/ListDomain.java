@@ -3,7 +3,6 @@ package xyz.juandiii.name.models;
 import javax.json.bind.annotation.JsonbPropertyOrder;
 import javax.json.bind.config.PropertyOrderStrategy;
 import java.util.List;
-import java.util.Set;
 
 @JsonbPropertyOrder(PropertyOrderStrategy.LEXICOGRAPHICAL)
 public class ListDomain {

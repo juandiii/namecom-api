@@ -1,4 +1,4 @@
-package xyz.juandiii.name;
+package xyz.juandiii.name.config;
 
 public class Config {
   private String username;

@@ -2,6 +2,7 @@ package xyz.juandiii.name.models;
 
 import javax.json.bind.annotation.JsonbPropertyOrder;
 
+
 @JsonbPropertyOrder(value = {"domain", "order", "totalPaid"})
 public class OrderDomain {
   private Domain domain;

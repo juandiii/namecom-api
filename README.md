@@ -3,7 +3,7 @@
 ![Supported Java 11 and above](https://img.shields.io/badge/JVM-11--17-brightgreen?logo=Java)
 ![GitHub Workflow Status](<https://img.shields.io/github/workflow/status/juandiii/namecom-api/Build Java and deploy to MVN Repositories>)
 
-Unofficial [**Name.com**](https://name.com) library for Java is an API V4 Rest is accessed over HTTPS. You can use to consuming resources through API [**Name.com**](https://name.com)
+Unofficial [**Name.com**](https://nameClient.com) library for Java is an API V4 Rest is accessed over HTTPS. You can use to consuming resources through API [**Name.com**](https://nameClient.com)
 
 This is used by the library HTTP client also known as [**Resteasy**](https://github.com/resteasy/resteasy)
 
@@ -35,9 +35,9 @@ ListDomain domains = client.domains().getDomains();
 
 ```java
 // Get an instance asynchronous
-NameAsync name = NameAsync.getInstance("username", "token-123");
+NameAsync nameClient = NameAsync.getInstance("username", "token-123");
 // Get List domain in asynchronous
-CompletionStage<ListDomain> domains = name.async().getDomains();
+CompletionStage<ListDomain> domains = nameClient.async().getDomains();
 domains.whenComplete((listDomain, throwable) -> {
   listDomain.getDomains().forEach(domain -> System.out.println(domain.getDomainName()));
 });

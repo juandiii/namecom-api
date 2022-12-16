@@ -1,20 +1,46 @@
-package xyz.juandiii.name.resources;
+package xyz.juandiii.name.async;
+
 
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
+import xyz.juandiii.name.config.ClientBuilderWrapper;
+import xyz.juandiii.name.config.Config;
+import xyz.juandiii.name.utils.JsonBProvider;
+import xyz.juandiii.name.filters.AuthorizationHeader;
 import xyz.juandiii.name.models.*;
 import xyz.juandiii.name.utils.ResponseWrapper;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import java.util.Set;
 import java.util.concurrent.CompletionStage;
 
-public class DomainAsyncResource {
+public class NameAsyncClientImpl implements NameAsyncClient {
 
+  private final Config config;
   private final ResteasyWebTarget target;
+  private final Client client;
 
-  public DomainAsyncResource(ResteasyWebTarget resteasyWebTarget) {
-    this.target = resteasyWebTarget;
+  public NameAsyncClientImpl(String username, String token, Client resteasyClient) {
+    config = new Config(username, token);
+    client = resteasyClient != null ? resteasyClient : newResteasyClient();
+    target = (ResteasyWebTarget) client.target(config.getServerUri());
+    target.register(new AuthorizationHeader(config.getUsername(), config.getToken()));
+  }
+
+  private static Client newResteasyClient() {
+    ClientBuilder clientBuilder = ClientBuilderWrapper.create();
+    clientBuilder.register(JsonBProvider.class);
+    return clientBuilder.build();
+  }
+
+  public static NameAsyncClientImpl getInstance(String username, String token, Client resteasyClient) {
+    return new NameAsyncClientImpl(username, token, resteasyClient);
+  }
+
+  public static NameAsyncClientImpl getInstance(String username, String token) {
+    return new NameAsyncClientImpl(username, token, null);
   }
 
   public CompletionStage<ListDomain> getDomains() {

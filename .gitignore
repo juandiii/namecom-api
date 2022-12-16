@@ -103,5 +103,5 @@ hs_err_pid*
 .settings/
 target/
 
-src/main/java/xyz/juandiii/name/Application.java
+src/main/java/xyz/juandiii/nameClient/Application.java
 #.idea/

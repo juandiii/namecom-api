@@ -1,4 +1,4 @@
-package xyz.juandiii.name;
+package xyz.juandiii.name.utils;
 
 import org.jboss.resteasy.plugins.providers.jsonb.JsonBindingProvider;
 
